@@ -1,0 +1,17 @@
+@mixin MediumFont() {
+  font-family: RobotoMedium, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin RegularFont() {
+  font-family: RobotoRegular, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+@mixin BoldFont() {
+  font-family: RobotoBold, sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+}

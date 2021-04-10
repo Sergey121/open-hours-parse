@@ -1,0 +1,30 @@
+@import "./fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: RobotoRegular, sans-serif;
+  color: var(--color-black);
+  background-color: var(--color-grey2);
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+:root {
+  --color-black: #202125;
+  --color-white: #ffffff;
+  --color-green: #5bcb02;
+  --color-grey1: #f8f8f8;
+  --color-grey2: #eeeeee;
+  --color-grey3: #a1a2a4;
+}

@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback, useState } from 'react';
+import Form from './components/form';
+import './scss/app.scss';
+import FileSelector from './components/file-selector';
+import { Week } from './models';
 
 function App() {
+  const [data, setData] = useState<Week | null>(null);
+
+  const handleChangeData = useCallback((data) => {
+    setData(data);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <FileSelector onChanged={handleChangeData}/>
+      {data && <Form week={data}/>}
     </div>
   );
 }
