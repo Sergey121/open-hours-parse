@@ -59,12 +59,16 @@ const getNextDay = (day: DaysOfWeek) => {
 }
 
 export const prepareWeek = (_week: Week): WeekTransformed => {
-  const week = JSON.parse(JSON.stringify(_week));
+  const week: Week = JSON.parse(JSON.stringify(_week));
   const response: WeekTransformed = [];
 
   daysOfWeek.forEach(day => {
-    debugger
-    const dayData = week[day];
+    const dayData = [...week[day]];
+
+    if (dayData?.[0]?.type === 'close') {
+      dayData.shift();
+    }
+
     if (dayData.length % 2 === 0) {
       response.push({
         day,

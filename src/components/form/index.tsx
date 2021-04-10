@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import styles from './form.module.scss';
 import { ReactComponent as ClockIcon } from './clock.svg';
 import { Week } from '../../models';
@@ -11,14 +11,29 @@ type Props = {
 
 function Form(props: Props) {
   const { week } = props;
+
+  const [error, setError] = useState('');
+
   const data = useMemo(() => {
-    console.log('Inside', week);
     if (week) {
-      console.count('Call prepare');
-      return prepareWeek(week);
+      try {
+        setError('');
+        return prepareWeek(week);
+      } catch (e) {
+        setError('Incorrect data.');
+        return [];
+      }
     }
     return [];
   }, [week]);
+
+  if (error) {
+    return (
+      <div className={styles.form}>
+        {error}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.form}>
