@@ -4,17 +4,17 @@ import styles from './file-selector.module.scss';
 
 type Props = {
   onChanged: (data: Week) => void;
-  className?: string;
 };
 
 function FileSelector(props: Props) {
-  const { onChanged, className } = props;
+  const { onChanged } = props;
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     if (file) {
       const reader = new FileReader();
-      reader.addEventListener('load', (a) => {
+      reader.addEventListener('load', () => {
         try {
           const result = JSON.parse(reader.result as string);
           onChanged(result);
@@ -38,7 +38,6 @@ function FileSelector(props: Props) {
         Select JSON file
       </label>
     </div>
-
   );
 }
 

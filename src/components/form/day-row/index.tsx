@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { DayIntervalTransformed, TimeInterval } from '../../../models';
 import styles from './date-row.module.scss';
 import Time from '../time';
-import { getDayNumberByName, sortByTime } from '../../../utils';
+import { getDayNumberByName } from '../../../utils';
 
 type Props = {
   day: DayIntervalTransformed;
@@ -12,7 +12,7 @@ function DayRow(props: Props) {
   const { day } = props;
 
   const content = useMemo(() => {
-    if (day.intervals.length <= 0) {
+    if (day.intervals.length === 0) {
       return (
         <div className={styles.closed}>Closed</div>
       );

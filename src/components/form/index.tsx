@@ -20,7 +20,7 @@ function Form(props: Props) {
         setError('');
         return prepareWeek(week);
       } catch (e) {
-        setError('Incorrect data.');
+        setError(e.message);
         return [];
       }
     }
