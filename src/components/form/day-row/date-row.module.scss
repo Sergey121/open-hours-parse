@@ -18,7 +18,7 @@
 
 .time {
   @include RegularFont();
-  margin-left: 12px;
+  margin-left: 32px;
 }
 
 .closed {
@@ -31,10 +31,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-
-  //> div:not(:last-of-type) {
-  //  margin-right: 8px;
-  //}
 }
 
 .today {
