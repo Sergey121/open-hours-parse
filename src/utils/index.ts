@@ -64,6 +64,7 @@ export const prepareWeek = (_week: Week): WeekTransformed => {
 
   daysOfWeek.forEach(day => {
     const dayData = [...week[day]];
+    dayData.sort(sortByTime);
 
     if (dayData?.[0]?.type === 'close') {
       dayData.shift();
@@ -76,13 +77,16 @@ export const prepareWeek = (_week: Week): WeekTransformed => {
       });
     } else {
       const nextDayData = week[getNextDay(day)];
+      nextDayData.sort(sortByTime);
 
       const interval = nextDayData.shift();
-      if (interval) {
+      if (interval && interval.type === 'close') {
         response.push({
           day,
           intervals: [...dayData, interval],
         });
+      } else {
+        throw new Error('Can`t prepare data. Intervals are not correct.');
       }
     }
   });
